@@ -17,7 +17,8 @@ namespace TMNAdapter_Demo_SpecFlow.Features
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.4.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [TechTalk.SpecRun.FeatureAttribute("CheckTitleInYoutubeVideo", SourceFile="Features\\CheckTitleInYouTubeVideoTest.feature", SourceLine=0)]
+    [NUnit.Framework.TestFixtureAttribute()]
+    [NUnit.Framework.DescriptionAttribute("CheckTitleInYoutubeVideo")]
     public partial class CheckTitleInYoutubeVideoFeature
     {
         
@@ -26,7 +27,7 @@ namespace TMNAdapter_Demo_SpecFlow.Features
 #line 1 "CheckTitleInYouTubeVideoTest.feature"
 #line hidden
         
-        [TechTalk.SpecRun.FeatureInitialize()]
+        [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
@@ -34,18 +35,19 @@ namespace TMNAdapter_Demo_SpecFlow.Features
             testRunner.OnFeatureStart(featureInfo);
         }
         
-        [TechTalk.SpecRun.FeatureCleanup()]
+        [NUnit.Framework.OneTimeTearDownAttribute()]
         public virtual void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
         
+        [NUnit.Framework.SetUpAttribute()]
         public virtual void TestInitialize()
         {
         }
         
-        [TechTalk.SpecRun.ScenarioCleanup()]
+        [NUnit.Framework.TearDownAttribute()]
         public virtual void ScenarioTearDown()
         {
             testRunner.OnScenarioEnd();
@@ -54,6 +56,7 @@ namespace TMNAdapter_Demo_SpecFlow.Features
         public virtual void ScenarioInitialize(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioInitialize(scenarioInfo);
+            testRunner.ScenarioContext.ScenarioContainer.RegisterInstanceAs<NUnit.Framework.TestContext>(NUnit.Framework.TestContext.CurrentContext);
         }
         
         public virtual void ScenarioStart()
@@ -66,6 +69,10 @@ namespace TMNAdapter_Demo_SpecFlow.Features
             testRunner.CollectScenarioErrors();
         }
         
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Check title name in youtube video")]
+        [NUnit.Framework.CategoryAttribute("EPMFARMATS-2470")]
+        [NUnit.Framework.TestCaseAttribute("https://www.youtube.com/watch?v=UKKYpdWPSL8", "EPAM Systems Global", null)]
         public virtual void CheckTitleNameInYoutubeVideo(string mainPage, string titleName, string[] exampleTags)
         {
             string[] @__tags = new string[] {
@@ -84,21 +91,6 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Then(string.Format("the {0} should be wrong", titleName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
-        }
-        
-        [TechTalk.SpecRun.ScenarioAttribute("Check title name in youtube video, https://www.youtube.com/watch?v=UKKYpdWPSL8", new string[] {
-                "EPMFARMATS-2470"}, SourceLine=9)]
-        public virtual void CheckTitleNameInYoutubeVideo_HttpsWww_Youtube_ComWatchVUKKYpdWPSL8()
-        {
-#line 4
-this.CheckTitleNameInYoutubeVideo("https://www.youtube.com/watch?v=UKKYpdWPSL8", "EPAM Systems Global", ((string[])(null)));
-#line hidden
-        }
-        
-        [TechTalk.SpecRun.TestRunCleanup()]
-        public virtual void TestRunCleanup()
-        {
-            TechTalk.SpecFlow.TestRunnerManager.GetTestRunner().OnTestRunEnd();
         }
     }
 }
